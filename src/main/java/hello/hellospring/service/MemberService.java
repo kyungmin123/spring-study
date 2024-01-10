@@ -13,6 +13,7 @@ import java.util.Optional;
 public class MemberService {
     private final MemberRepository memberRepository;
 
+//    @Autowired는 spring에서 관리하는 객체에서만 가능
     @Autowired
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
