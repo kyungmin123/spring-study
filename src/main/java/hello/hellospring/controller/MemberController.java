@@ -46,7 +46,6 @@ public class MemberController {
 
     @GetMapping("/members")
     public String list(Model model) {
-        // TODO: html에서 객체 인식을 하지 못해 에러 발생
         List<Member> members = memberService.findMembers();
         model.addAttribute("members", members);
         return "members/memberList";
