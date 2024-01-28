@@ -14,35 +14,23 @@ public class SpringConfig {
     // 스프링 컨테이너에 직접 넣어주기
     // 상황에 따라 구현 클래스를 변경할 때 사용
 
-    private EntityManager em;
+    private final MemberRepository memberRepository;
 
     @Autowired
-    public SpringConfig(EntityManager em) {
-        this.em = em;
+    public SpringConfig(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
     }
-//    private DataSource dataSource;
-//
-//    @Autowired
-//    public SpringConfig(DataSource dataSource) {
-//        this.dataSource = dataSource;
-//    }
-//    private DataSource dataSource;
-//
-//    @Autowired
-//    public SpringConfig(DataSource dataSource) {
-//        this.dataSource = dataSource;
-//    }
 
     @Bean
     public MemberService memberService() {
-        return new MemberService(memberRepository());
+        return new MemberService(memberRepository);
     }
 
-    @Bean
-    public MemberRepository memberRepository() {
-//        return new MemoryMemberRepository(); // -> DBMemoryMemberRepository();
-//        return new JdbcMemberRepository(dataSource);
-//        return new JdbcTemplateMemberRepository(dataSource);
-        return new JpaMemberRepository(em);
-    }
+//    @Bean
+//    public MemberRepository memberRepository() {
+////        return new MemoryMemberRepository(); // -> DBMemoryMemberRepository();
+////        return new JdbcMemberRepository(dataSource);
+////        return new JdbcTemplateMemberRepository(dataSource);
+////        return new JpaMemberRepository(em);
+//    }
 }
