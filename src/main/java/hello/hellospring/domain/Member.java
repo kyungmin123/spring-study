@@ -1,7 +1,15 @@
 package hello.hellospring.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Member {
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) // Id 자동 증가
     private Long id;
+    // @Column(name = "username") 변수명 컬럼 매핑
     private String name;
 
     public Long getId() {
