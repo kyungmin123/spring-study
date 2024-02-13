@@ -26,7 +26,9 @@ public class MemberController {
 //    생성자 주입: (권장) 의존 관계가 실행 중에 동적으로 변하는 경우가 거의 없음
     @Autowired
     public MemberController(MemberService memberService) {
+
         this.memberService = memberService;
+        System.out.println("memberService = " + memberService.getClass());
     }
 
     @GetMapping("members/new")
